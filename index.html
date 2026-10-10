@@ -3,81 +3,237 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Livro de Estímulos — Adultos</title>
+<title>Livro de Estímulos — Dark Academia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IM+Fell+English+SC&family=Special+Elite&display=swap" rel="stylesheet">
 <style>
-:root{--wood:#17110d;--leather:#1f2d26;--page:#d9ccae;--page2:#cbbd9b;--ink:#2a2018;--brass:#b08d57;--wax:#6e1a22;--wax2:#4a1017;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-*,*::before,*::after{box-sizing:inherit}
-html{height:100%}
-body{margin:0;min-height:100%;background:radial-gradient(ellipse at 50% 30%,#2a1f17,var(--wood) 70%);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;display:flex;align-items:center;justify-content:center;padding:20px}
-.book{width:min(1080px,100%);display:flex;background:var(--leather);padding:14px 14px 14px 14px;border-radius:6px 14px 14px 6px;box-shadow:0 30px 60px #000a,inset 0 0 0 2px var(--brass)}
-.pages{flex:1;display:grid;grid-template-columns:1fr 1fr;min-height:560px;background:linear-gradient(90deg,var(--page),var(--page2) 49%,#a89873 50%,var(--page2) 51%,var(--page));border-radius:3px;position:relative}
-.pg{padding:34px 34px 40px;display:flex;flex-direction:column}
-.pg h1{font-family:"IM Fell English SC",serif;font-weight:400;font-size:2rem;margin:0 0 4px;letter-spacing:.02em}
-.pg .sub{font-style:italic;font-size:1.15rem;margin:0 0 18px;opacity:.8;border-bottom:1px solid #2a201855;padding-bottom:12px}
-.seals{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;align-content:flex-start;flex:1}
-.seal{--s:100px;width:var(--s);height:var(--s);border:0;cursor:pointer;color:#e9c9b8;font:600 .8rem/1.1 "Cormorant Garamond",serif;text-align:center;padding:14px;text-decoration:none;display:flex;align-items:center;justify-content:center;border-radius:52% 48% 55% 45%/48% 54% 46% 52%;background:radial-gradient(circle at 35% 30%,#9a2a33,var(--wax) 55%,var(--wax2));box-shadow:0 5px 8px #0006,inset 0 0 0 5px #0000,inset 0 0 0 6px #e9c9b833,inset 0 -5px 8px #0005;text-shadow:0 -1px 0 #0008;transition:transform .15s}
-.seal:nth-child(3n+2){border-radius:46% 54% 48% 52%/55% 45% 53% 47%;transform:rotate(-5deg);margin-top:18px}
-.seal:nth-child(3n){border-radius:55% 45% 50% 50%/46% 52% 48% 54%;transform:rotate(4deg)}
-.seal:hover,.seal:focus-visible{transform:scale(1.07) rotate(0)}
-.seal:focus-visible{outline:2px solid var(--brass);outline-offset:4px}
-.seal.new{background:none;box-shadow:none;border:1.5px dashed #2a201866;color:#2a201888;font-style:italic;font-weight:500;text-shadow:none}
-.note{margin-top:auto;padding-top:14px;font-style:italic;min-height:2.2em;font-size:1.05rem}
-.tabs{display:flex;flex-direction:column;gap:6px;margin-left:10px;padding-top:26px}
-.tab{writing-mode:vertical-rl;transform:rotate(180deg);font-family:"IM Fell English SC",serif;font-size:1rem;background:#2b3d33;color:var(--brass);border:1px solid var(--brass);border-left:0;padding:14px 8px;cursor:pointer;border-radius:0 8px 8px 0;white-space:nowrap}
-.tab[aria-selected=true]{background:var(--wax);color:#f1dcc8}
-.tab:focus-visible{outline:2px solid var(--page);outline-offset:2px}
-.fade{animation:f .35s ease}
-@keyframes f{from{opacity:0}to{opacity:1}}
+:root{
+ --bg:#151713; --bg2:#20221b; --leather:#30251d; --leather2:#493326;
+ --brass:#b79a62; --brass-dim:#806b45; --paper:#d6c6a2; --paper2:#c6b48d;
+ --ink:#30271d; --muted-ink:#68543a; --wine:#672d32; --wine2:#481f27;
+ --forest:#26392f; --moss:#65724e; --rust:#a45f43; --blue:#587579;
+}
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0}
+body{
+ overflow:hidden; display:flex;align-items:center;justify-content:center;
+ padding:clamp(8px,1.7vh,18px) clamp(8px,1.8vw,24px);
+ color:var(--ink);
+ background:radial-gradient(ellipse at 50% 42%,#333126 0,#20221c 48%,#11130f 100%);
+ font-family:"Cormorant Garamond",Georgia,serif;
+}
+.book{
+ width:min(1240px,100%);height:min(900px,calc(100dvh - 2.8vh));
+ min-height:0;display:flex;position:relative;align-items:stretch;
+ padding:clamp(8px,1.2vw,15px);
+ background:linear-gradient(90deg,#241b16,#59402d 3%,#30231b 7%,#3d2a20 93%,#6a4a30 97%,#211a15);
+ border:2px solid var(--brass-dim);border-radius:22px 28px 27px 22px;
+ box-shadow:0 18px 45px #0008,inset 0 0 0 3px #211812,inset 0 0 0 5px #8c6d43;
+}
+.book:before{
+ content:"";position:absolute;z-index:5;left:50%;top:5px;bottom:5px;transform:translateX(-50%);
+ width:clamp(20px,2.6vw,31px);border:2px solid #35251b;border-radius:9px;
+ background:repeating-linear-gradient(to bottom,#8b6b42 0 4px,#3b2920 4px 12px);
+ box-shadow:0 0 0 2px #a68a59,0 0 10px #0006;pointer-events:none
+}
+.pages{
+ width:100%;min-width:0;min-height:0;display:grid;
+ grid-template-columns:minmax(0,1fr) clamp(22px,3vw,34px) minmax(0,1fr);
+ position:relative;overflow:hidden;border:2px solid #846842;border-radius:10px;
+ background:
+  linear-gradient(90deg,transparent 49.2%,#9a8057 49.7%,#6b5034 50%,#b49a6d 50.5%,transparent 51%),
+  repeating-linear-gradient(0deg,transparent 0 26px,#6f5a3b18 26px 27px),
+  repeating-linear-gradient(90deg,transparent 0 26px,#6f5a3b18 26px 27px),
+  linear-gradient(90deg,#d8c9a7 0%,#d2c19c 49.5%,#c8b58c 50.5%,#d8c9a7 100%);
+ box-shadow:inset 0 0 0 5px #a58a5c,inset 0 0 0 8px #e0d0ad,inset 0 0 25px #4c382322;
+}
+.pages:after{content:"";position:absolute;z-index:1;pointer-events:none;left:50%;top:0;bottom:0;width:17px;transform:translateX(-50%);background:linear-gradient(90deg,#4a342855,#ead9b855 45%,#6d503755)}
+.pg{
+ min-width:0;min-height:0;overflow:hidden;position:relative;z-index:0;
+ padding:clamp(16px,2.7vh,28px) clamp(16px,1.8vw,26px) clamp(14px,2.2vh,22px);
+ display:flex;flex-direction:column;gap:clamp(7px,1.3vh,13px)
+}
+.kicker{font:10px "Special Elite",monospace;letter-spacing:.1em;text-transform:uppercase;color:#796342;margin-bottom:1px}
+.heading-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;border-bottom:1px solid #65513755;padding-bottom:12px}
+.heading-copy{min-width:0;flex:1}
+h1{font:400 clamp(1.65rem,3.3vh,2.55rem)/1.02 "IM Fell English SC",serif;margin:0 0 7px;color:#493222;letter-spacing:.015em}
+.sub{font-size:clamp(1rem,1.9vh,1.25rem);line-height:1.25;font-style:italic;color:#70583c;margin:0;max-width:34ch}
+.stamp{flex:none;width:clamp(48px,6.4vh,66px);height:clamp(48px,6.4vh,66px);display:grid;place-items:center;text-align:center;padding:5px;border:1.5px dashed #89513b;border-radius:50%;background:#bca16e;color:#5a3528;font:9px/1.15 "Special Elite",monospace;transform:rotate(7deg)}
+.seals{display:flex;flex-wrap:wrap;align-content:flex-start;align-items:center;gap:clamp(8px,1.2vw,14px);flex:1;min-height:0;padding:5px 0}
+.seal{
+ --w:clamp(160px,21vh,220px);--h:clamp(116px,16vh,166px);
+ width:var(--w);height:var(--h);flex:0 0 var(--w);
+ display:flex;align-items:center;justify-content:center;text-align:center;padding:10px 13px;
+ position:relative;overflow:visible;overflow-wrap:normal;hyphens:auto;word-break:normal;
+ color:#f0dfbd;text-decoration:none;font:600 clamp(.9rem,1.8vh,1.08rem)/1.18 "Cormorant Garamond",Georgia,serif;
+ border:1.5px solid #b89a63;
+ background:linear-gradient(145deg,#78513b,#4c3026 68%,#32241d);
+ box-shadow:0 3px 5px #33231845,inset 0 0 0 3px #d4bb8055,inset 0 -7px 12px #17120e50;
+ cursor:pointer;transition:transform .15s,filter .15s;
+ clip-path:polygon(6% 0,94% 0,100% 10%,96% 90%,90% 100%,10% 100%,4% 90%,0 10%);
+}
+.seal:before{
+ content:"";position:absolute;inset:5px;border:1px dashed #d5b87899;
+ clip-path:inherit;pointer-events:none
+}
+/* Alternância de formatos: selo postal, etiqueta de arquivo, brasão e bilhete antigo. */
+.seal:nth-child(4n+1){
+ --w:clamp(150px,19.5vh,204px);--h:clamp(132px,17vh,178px);
+ clip-path:polygon(7% 0,93% 0,100% 12%,100% 88%,93% 100%,7% 100%,0 88%,0 12%);
+ background:linear-gradient(145deg,#78513b,#4c3026 68%,#32241d);
+ transform:rotate(-2deg)
+}
+.seal:nth-child(4n+2){
+ --w:clamp(176px,23vh,236px);--h:clamp(108px,14.5vh,150px);
+ clip-path:polygon(50% 0,61% 8%,75% 4%,82% 16%,96% 23%,91% 38%,100% 50%,91% 62%,96% 77%,82% 84%,75% 96%,61% 92%,50% 100%,39% 92%,25% 96%,18% 84%,4% 77%,9% 62%,0 50%,9% 38%,4% 23%,18% 16%,25% 4%,39% 8%);
+ background:linear-gradient(145deg,#81534b,#622e34 72%);transform:rotate(3deg)
+}
+.seal:nth-child(4n+3){
+ --w:clamp(140px,18vh,188px);--h:clamp(140px,18vh,188px);
+ clip-path:polygon(0 8%,7% 0,93% 0,100% 8%,96% 50%,100% 92%,93% 100%,7% 100%,0 92%,4% 50%);
+ background:linear-gradient(145deg,#7a7956,#414a36 75%);transform:rotate(-1deg)
+}
+.seal:nth-child(4n){
+ --w:clamp(154px,20vh,208px);--h:clamp(154px,20vh,208px);
+ clip-path:polygon(50% 0,61% 10%,75% 5%,82% 19%,96% 25%,90% 40%,100% 50%,90% 60%,96% 75%,82% 81%,75% 95%,61% 90%,50% 100%,39% 90%,25% 95%,18% 81%,4% 75%,10% 60%,0 50%,10% 40%,4% 25%,18% 19%,25% 5%,39% 10%);
+ background:linear-gradient(145deg,#7c7960,#4c5e5a 75%);transform:rotate(2deg)
+}
+.seal:hover,.seal:focus-visible{transform:scale(1.055) rotate(0);filter:brightness(1.12);z-index:2}
+.seal:focus-visible,.tab:focus-visible{outline:2px solid #c8ad71;outline-offset:3px}
+.seal.new{
+ color:#806b4d;border:1.5px dashed #9b8158;
+ background:linear-gradient(145deg,#e3d4b4,#c8b58c);
+ box-shadow:inset 0 0 0 3px #f0e2c155;font-style:italic
+}
+.seal.new:before{border-color:#927850aa}
+.left-bottom{margin-top:auto;display:flex;align-items:flex-end;gap:14px;min-height:clamp(92px,18vh,155px)}
+.polaroid{width:min(48%,235px);padding:7px 7px 17px;background:#e6d7b7;border:1px solid #a58a5d;box-shadow:0 4px 8px #3021172e;transform:rotate(-4deg);margin:0 0 4px 3px}
+.polaroid .art{height:clamp(55px,10vh,98px);display:grid;place-items:center;background:linear-gradient(145deg,#75433b,#422729 68%,#8b6546);border:3px solid #b49a6b;color:#d7c18e;font-size:2.2rem}
+.polaroid figcaption{padding-top:7px;text-align:center;font-size:.82rem;line-height:1.1;color:#73593a}
+.left-caption{max-width:120px;font-size:.92rem;line-height:1.25;color:#806b4e;font-style:italic;margin-bottom:9px}
+.right-head{display:flex;align-items:center;gap:12px;min-height:clamp(66px,10vh,94px)}
+.title-card{flex:1;min-width:0;border:2px solid #8a4b3a;border-radius:8px 14px 10px 8px;background:#e4c99d;padding:12px 14px;box-shadow:2px 3px 0 #71503530;transform:rotate(.4deg)}
+.title-card h2{font:400 clamp(1.45rem,3vh,2.2rem)/1 "IM Fell English SC",serif;margin:0;color:#66352d}
+.title-card p{margin:6px 0 0;font:9px "Special Elite",monospace;letter-spacing:.1em;color:#7b6041}
+.current-label{display:flex;align-items:center;gap:9px;font:10px "Special Elite",monospace;letter-spacing:.08em;text-transform:uppercase;color:#775e3e;margin-top:2px}
+.current-label:after{content:"";height:1px;background:#7e674650;flex:1}
+.species{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.species span{border:1px solid #8c714b88;border-radius:20px;padding:8px 4px;text-align:center;background:#d9c69f;color:#624b32;font-size:clamp(.8rem,1.7vh,1rem);line-height:1.1}
+.note{margin:auto 0 0;padding-top:10px;border-top:1px dashed #80674666;font-size:clamp(.92rem,1.8vh,1.08rem);line-height:1.3;color:#72593c;min-height:2.6em}
+.tabs{display:flex;flex-direction:column;gap:6px;margin-left:-1px;padding:clamp(30px,5vh,48px) 0 16px;align-self:stretch;z-index:6}
+.tab{width:clamp(36px,3.8vw,49px);flex:1;min-height:0;border:1px solid #8d6d45;border-left:0;border-radius:0 8px 8px 0;color:#f0dfbd;font:400 clamp(.72rem,1.45vh,.9rem)/1.05 "IM Fell English SC",serif;writing-mode:vertical-rl;text-orientation:mixed;padding:8px 6px;cursor:pointer;box-shadow:2px 2px 0 #100d0a35}
+.tab:nth-child(4n+1){background:#633b32}.tab:nth-child(4n+2){background:#79663d}.tab:nth-child(4n+3){background:#40513c}.tab:nth-child(4n){background:#3c5556}
+.tab[aria-selected=true]{color:#fff0cd;box-shadow:inset 3px 0 #c7a969,2px 2px 0 #100d0a35;filter:brightness(1.18);transform:translateX(3px)}
+.fade{animation:fade .22s ease}
+@keyframes fade{from{opacity:.6}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.fade{animation:none}.seal{transition:none}}
+/* Em telas menores, a navegação vira uma faixa horizontal; em celulares baixos, a página pode rolar internamente. */
 @media(max-width:760px){
-body{padding:12px;align-items:flex-start}
-.book{flex-direction:column-reverse;padding:10px}
-.pages{grid-template-columns:1fr;background:var(--page)}
-.pg{padding:22px 20px}
-.tabs{flex-direction:row;overflow-x:auto;margin:0 0 8px;padding:0}
-.tab{writing-mode:horizontal-tb;transform:none;border:1px solid var(--brass);border-radius:8px 8px 0 0;padding:8px 12px}
+ body{overflow:auto;min-height:100%;height:auto;align-items:flex-start;padding:10px}
+ .book{height:auto;min-height:calc(100dvh - 20px);flex-direction:column-reverse;padding:9px;border-radius:15px}
+ .book:before{display:none}
+ .pages{grid-template-columns:minmax(0,1fr);overflow:visible}
+ .pages:before,.pages:after{display:none}
+ .pg:nth-child(2){grid-column:auto}
+ .pg{overflow:visible;padding:22px 18px;min-height:340px}
+ .pg+ .pg{border-top:7px double #8b714a}
+ .tabs{flex-direction:row;overflow-x:auto;margin:0 0 9px;padding:3px 2px 7px;align-self:stretch}
+ .tab{writing-mode:horizontal-tb;text-orientation:initial;width:auto;min-height:38px;flex:0 0 auto;white-space:nowrap;border:1px solid #8d6d45;border-radius:7px;padding:9px 12px}
+ .tab[aria-selected=true]{transform:translateY(-2px)}
+ .seal{--w:clamp(150px,40vw,200px);--h:clamp(110px,30vw,150px);width:var(--w);height:var(--h);flex-basis:var(--w);padding:10px 14px}
+ .left-bottom{min-height:105px}
+}
+@media(max-height:620px) and (min-width:761px){
+ .book{height:calc(100dvh - 16px);padding:8px}
+ .pg{padding-top:12px;padding-bottom:12px;gap:6px}
+ .heading-row{padding-bottom:7px}
+ .left-bottom{min-height:60px}
+ .polaroid .art{height:42px}
+ .seal{--s:clamp(68px,9.5vh,88px)}
+ .tab{padding-top:5px;padding-bottom:5px}
 }
 </style>
 </head>
 <body>
-<main class="book">
-  <section class="pages" id="pages" aria-live="polite"></section>
-  <nav class="tabs" id="tabs" role="tablist" aria-label="Baterias"></nav>
+<main class="book" aria-label="Livro de estímulos para adultos">
+ <section class="pages" id="pages" aria-live="polite"></section>
+ <nav class="tabs" id="tabs" role="tablist" aria-label="Capítulos"></nav>
 </main>
 <script>
-// Edite aqui: cada selo tem label e href (link da página de estímulos). href vazio = ainda não montada.
 const CAPITULOS=[
  {n:"WAIS-IV",s:"Escala de inteligência para adultos",i:[["Cubos",""],["Raciocínio Matricial",""],["Quebra-Cabeça Visual",""],["Completar Figuras",""],["+ nova"],["+ nova"]]},
  {n:"NEUPSILIN",s:"Avaliação neuropsicológica breve",i:[["Cópia de Figuras",""],["Percepção Visual",""],["Memória Visuoverbal",""],["Compreensão Escrita",""],["Escrita Copiada",""],["+ nova"]]},
- {n:"Funções executivas",s:"Flexibilidade, planejamento, inibição",i:[["WCST",""],["Torre de Londres",""],["Stroop",""],["Trilhas A e B",""],["+ nova"],["+ nova"]]},
- {n:"Linguagem e percepção",s:"Nomeação, organização visual, fluência",i:[["FDT",""],["Hooper",""],["Nomeação de Boston",""],["+ nova"],["+ nova"]]},
+ {n:"Funções executivas",s:"Flexibilidade, planejamento e inibição",i:[["WCST",""],["Torre de Londres",""],["Stroop",""],["Trilhas A e B",""],["+ nova"],["+ nova"]]},
+ {n:"Linguagem e percepção",s:"Nomeação, organização visual e fluência",i:[["FDT",""],["Hooper",""],["Nomeação de Boston",""],["+ nova"],["+ nova"]]},
  {n:"Memória",s:"Evocação visual e verbal",i:[["Figura de Rey",""],["Memória de Faces",""],["+ nova"],["+ nova"]]},
  {n:"Rastreio",s:"Avaliação cognitiva breve",i:[["MoCA",""],["MEEM",""],["ACE-R",""],["+ nova"]]},
  {n:"Outros",s:"Material avulso",i:[["+ nova"],["+ nova"],["+ nova"]]}
 ];
-const SIZES=[112,92,128,100,84,120];
+const SIZES=[94,86,104,90,82,98];
 const pages=document.getElementById("pages"),tabs=document.getElementById("tabs");
-function show(k){
-  const c=CAPITULOS[k],half=Math.ceil(c.i.length/2);
-  const mk=(arr,off)=>arr.map(([l,h],j)=>{
-    const a=document.createElement(h?"a":"button");a.className="seal"+(l.startsWith("+")?" new":"");
-    a.style.setProperty("--s",SIZES[(j+off)%SIZES.length]+"px");a.textContent=l;
-    if(h)a.href=h;else a.type="button";
-    a.onclick=h?null:()=>{note.textContent=l.startsWith("+")?"Espaço livre para uma nova página de estímulos.":"Esta página de estímulos ainda não foi montada."};
-    return a}).reduce((d,e)=>(d.appendChild(e),d),Object.assign(document.createElement("div"),{className:"seals"}));
-  pages.innerHTML="";pages.className="pages fade";
-  const L=document.createElement("div");L.className="pg";L.innerHTML=`<h1></h1><p class="sub"></p>`;
-  L.querySelector("h1").textContent=c.n;L.querySelector(".sub").textContent=c.s;
-  L.appendChild(mk(c.i.slice(0,half),0));
-  const R=document.createElement("div");R.className="pg";R.appendChild(mk(c.i.slice(half),half));
-  const note=document.createElement("p");note.className="note";R.appendChild(note);
-  pages.append(L,R);
-  [...tabs.children].forEach((t,j)=>t.setAttribute("aria-selected",j===k));
+function makeSeal(label,href,index){
+ const el=document.createElement(href?"a":"button");
+ el.className="seal"+(label.startsWith("+")?" new":"");
+ el.style.setProperty("--s",SIZES[index%SIZES.length]+"px");
+ el.textContent=label;
+ if(href){el.href=href;el.target="_blank";el.rel="noopener noreferrer"}
+ else{
+  el.type="button";
+  el.addEventListener("click",()=>{
+   const note=pages.querySelector(".note");
+   if(note)note.textContent=label.startsWith("+")?"Espaço livre para adicionar uma nova página de estímulos.":"Esta página de estímulos ainda não tem um link associado.";
+  });
+ }
+ return el;
 }
-CAPITULOS.forEach((c,k)=>{const b=document.createElement("button");b.className="tab";b.role="tab";b.textContent=c.n;b.onclick=()=>show(k);tabs.appendChild(b)});
+function makeSeals(items,offset){
+ const wrap=document.createElement("div");wrap.className="seals";
+ items.forEach(([label,href],i)=>wrap.appendChild(makeSeal(label,href,i+offset)));
+ return wrap;
+}
+function show(k){
+ const c=CAPITULOS[k],half=Math.ceil(c.i.length/2);
+ pages.replaceChildren();pages.className="pages fade";
+ const L=document.createElement("article");L.className="pg";
+ const kicker=document.createElement("div");kicker.className="kicker";kicker.textContent="Caderno de avaliação · arquivo visual";
+ const head=document.createElement("div");head.className="heading-row";
+ const copy=document.createElement("div");copy.className="heading-copy";
+ const h=document.createElement("h1");h.textContent=c.n;
+ const sub=document.createElement("p");sub.className="sub";sub.textContent=c.s;
+ copy.append(h,sub);
+ const stamp=document.createElement("div");stamp.className="stamp";stamp.textContent="FICHA DE ESTÍMULOS";
+ head.append(copy,stamp);
+ L.append(kicker,head,makeSeals(c.i.slice(0,half),0));
+ const bottom=document.createElement("div");bottom.className="left-bottom";
+ const figure=document.createElement("figure");figure.className="polaroid";
+ const art=document.createElement("div");art.className="art";art.textContent="✦  ◉  ✦";
+ const cap=document.createElement("figcaption");cap.textContent="Registro visual · material de apoio";
+ figure.append(art,cap);
+ const caption=document.createElement("p");caption.className="left-caption";caption.textContent="Arquivo de estímulos e materiais de consulta.";
+ bottom.append(figure,caption);L.append(bottom);
+ const R=document.createElement("article");R.className="pg";
+ const rightHead=document.createElement("div");rightHead.className="right-head";
+ const card=document.createElement("div");card.className="title-card";
+ const title=document.createElement("h2");title.textContent="Livro de estímulos";
+ const date=document.createElement("p");date.textContent="ACERVO · ADULTOS";
+ card.append(title,date);
+ const sticker=document.createElement("div");sticker.className="stamp";sticker.textContent="USO DE APOIO";
+ rightHead.append(card,sticker);
+ R.append(rightHead,makeSeals(c.i.slice(half),half));
+ const label=document.createElement("div");label.className="current-label";label.textContent="Conteúdo deste capítulo";R.append(label);
+ const species=document.createElement("div");species.className="species";
+ ["Visual","Verbal","Cognitivo"].forEach((x,i)=>{const s=document.createElement("span");s.textContent=["✧ "+x,"✦ "+x,"❋ "+x][i];species.append(s)});
+ R.append(species);
+ const note=document.createElement("p");note.className="note";note.textContent="Selecione um selo para abrir o material ou configurar o link correspondente.";R.append(note);
+ pages.append(L,R);
+ [...tabs.children].forEach((t,j)=>{t.setAttribute("aria-selected",String(j===k));t.tabIndex=j===k?0:-1});
+}
+CAPITULOS.forEach((c,k)=>{
+ const b=document.createElement("button");b.className="tab";b.type="button";b.role="tab";b.textContent=c.n;
+ b.setAttribute("aria-selected","false");b.tabIndex=-1;b.addEventListener("click",()=>show(k));
+ b.addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();const next=(k+(e.key==="ArrowRight"?1:CAPITULOS.length-1))%CAPITULOS.length;tabs.children[next].focus();show(next)}});
+ tabs.appendChild(b);
+});
 show(0);
 </script>
 </body>
