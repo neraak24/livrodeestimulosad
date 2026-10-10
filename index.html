@@ -47,7 +47,7 @@ body{
 .pages:before{content:"";position:absolute;z-index:1;pointer-events:none;left:50%;top:0;bottom:0;transform:translateX(-50%);width:clamp(20px,2.6vw,31px);border-left:2px solid #35251b;border-right:2px solid #35251b;border-radius:4px;background:repeating-linear-gradient(to bottom,#8b6b42 0 4px,#3b2920 4px 12px);box-shadow:0 0 0 1px #a68a59,0 0 10px #0003}
 .pages{
  width:100%;min-width:0;min-height:0;display:grid;
- grid-template-columns:minmax(0,1fr) clamp(28px,3.4vw,42px) minmax(0,1fr);
+ grid-template-columns:minmax(0,1fr) minmax(0,1fr);
  position:relative;overflow:hidden;border:2px solid #846842;border-radius:10px;
  background:
   linear-gradient(90deg, transparent 0%, #bda77c18 3%, transparent 10%, transparent 42%, #8a6b4530 49%, #6c4b2e66 50%, #f0dfba55 51%, transparent 57%, transparent 92%, #8b6c431c 100%),
@@ -62,18 +62,20 @@ body{
   linear-gradient(90deg,#dfd1b1 0%,#d8c9a7 47%,#c5b18a 50%,#d9c9a5 53%,#e0d2b4 100%);
 }
 .pages:after{content:"";position:absolute;z-index:2;pointer-events:none;left:50%;top:0;bottom:0;width:clamp(28px,3.4vw,42px);transform:translateX(-50%);background:linear-gradient(90deg,#4a342822 0%,#8b6a4548 22%,#f1dfbb66 48%,#72523755 75%,#3c2a1c22 100%);box-shadow:0 0 7px #5b41221a}
-/* Navegação lateral: dobra pequena aplicada visualmente à folha, não à capa */
-.page-turn{position:absolute;z-index:5;top:0;bottom:0;width:clamp(22px,2.2vw,30px);border:0;padding:0;background:transparent;cursor:pointer;color:#5b4028;opacity:.9;transition:opacity .18s ease;display:flex;align-items:center;justify-content:center}
+/* V17 — virada de página mais rica, presa à quina externa das folhas */
+.page-turn{position:absolute;z-index:8;top:0;bottom:0;width:clamp(24px,3vw,38px);border:0;padding:0;background:transparent;cursor:pointer;color:#5b4028;opacity:.98;display:flex;align-items:center;justify-content:center;perspective:220px;transition:background .25s ease}
 .page-turn.prev{left:0}.page-turn.next{right:0}
-.page-turn:hover,.page-turn:focus-visible{opacity:1;outline:none}
-.page-turn .turn-icon{position:absolute;top:0;width:15px;height:15px;border:0;filter:drop-shadow(1px 2px 1px #4b321b22);transition:width .22s ease,height .22s ease,filter .22s ease}
-.page-turn.prev .turn-icon{left:0;background:linear-gradient(135deg,#bda77c 0 48%,#f1e3c4 50% 65%,#8e7048 67% 100%);clip-path:polygon(0 0,100% 0,0 100%);transform-origin:top left}
-.page-turn.next .turn-icon{right:0;background:linear-gradient(225deg,#bda77c 0 48%,#f1e3c4 50% 65%,#8e7048 67% 100%);clip-path:polygon(0 0,100% 0,100% 100%);transform-origin:top right}
-.page-turn:hover .turn-icon,.page-turn:focus-visible .turn-icon{width:27px;height:27px;filter:drop-shadow(2px 3px 2px #4b321b35)}
-.page-turn .turn-label{pointer-events:none;position:absolute;top:50%;font:10px 'Special Elite',monospace;letter-spacing:.08em;writing-mode:vertical-rl;opacity:0;transition:opacity .18s ease;background:#e0d0adbb;padding:8px 3px;border-radius:3px}
-.page-turn.prev .turn-label{left:0;transform:translateY(-50%) rotate(180deg)}.page-turn.next .turn-label{right:0;transform:translateY(-50%)}
-.page-turn:hover .turn-label,.page-turn:focus-visible .turn-label{opacity:.85}
-@media(prefers-reduced-motion:reduce){.page-turn,.page-turn .turn-icon,.page-turn .turn-label{pointer-events:none;transition:none}}
+.page-turn.prev:hover{background:linear-gradient(90deg,#72533118,transparent)}.page-turn.next:hover{background:linear-gradient(270deg,#72533118,transparent)}
+.page-turn .turn-label{display:none!important}
+.page-turn .turn-icon{position:absolute;top:0;width:0;height:0;border:0;filter:none;transition:all .42s cubic-bezier(.2,.75,.25,1);transform-style:preserve-3d;pointer-events:none}
+.page-turn.prev .turn-icon{left:0;transform-origin:top left;clip-path:polygon(0 0,100% 0,0 100%);background:linear-gradient(135deg,#9c784b 0%,#e9d5a8 43%,#f5e9ca 48%,#bca071 62%,#80603d 100%);box-shadow:3px 4px 7px #39261940}
+.page-turn.next .turn-icon{right:0;transform-origin:top right;clip-path:polygon(0 0,100% 0,100% 100%);background:linear-gradient(225deg,#9c784b 0%,#e9d5a8 43%,#f5e9ca 48%,#bca071 62%,#80603d 100%);box-shadow:-3px 4px 7px #39261940}
+.page-turn:hover .turn-icon,.page-turn:focus-visible .turn-icon{width:clamp(34px,5vw,62px);height:clamp(34px,5vw,62px);filter:drop-shadow(2px 5px 3px #39261945)}
+.page-turn.prev:hover .turn-icon,.page-turn.prev:focus-visible .turn-icon{transform:rotateY(-24deg) rotateX(8deg) translate(1px,1px)}
+.page-turn.next:hover .turn-icon,.page-turn.next:focus-visible .turn-icon{transform:rotateY(24deg) rotateX(8deg) translate(-1px,1px)}
+.page-turn:active .turn-icon{width:clamp(42px,6vw,72px);height:clamp(42px,6vw,72px);filter:drop-shadow(1px 2px 2px #39261950)}
+.page-turn:focus-visible{outline:2px solid #b99b62;outline-offset:-3px}
+@media(prefers-reduced-motion:reduce){.page-turn,.page-turn .turn-icon,.page-turn .turn-label{transition:none}}
 .pg{
  min-width:0;min-height:0;overflow:hidden;position:relative;z-index:0;
  background:linear-gradient(90deg,#fff0 0%,#fff0 88%,#7c5d3710 100%);
@@ -241,8 +243,9 @@ h1{font:400 clamp(1.65rem,3.3vh,2.55rem)/1.02 "IM Fell English SC",serif;margin:
 .book:before{display:none}
  .pages{grid-template-columns:minmax(0,1fr);overflow:visible}
  .pages:before,.pages:after{display:none}
- .page-turn{position:absolute;top:18px;bottom:18px;width:30px;height:auto;background:transparent;border:0;box-shadow:none;border-radius:0;z-index:20}
- .page-turn.prev{left:10px}.page-turn.next{right:10px}
+ .page-turn{position:absolute;top:18px;bottom:18px;width:12px;height:auto;background:transparent;border:0;box-shadow:none;border-radius:0;z-index:20}
+ .page-turn.prev{left:0}.page-turn.next{right:0}
+.page-turn.prev:hover{background:linear-gradient(90deg,#72533118,transparent)}.page-turn.next:hover{background:linear-gradient(270deg,#72533118,transparent)}
  .page-turn .turn-icon{border-bottom-color:#d2b783}
  .page-turn .turn-label{pointer-events:none;display:none}
  .pg:last-child{grid-column:auto}
