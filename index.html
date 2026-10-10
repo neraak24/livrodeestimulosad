@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Livro de Estímulos — Adultos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--wood:#17110d;--leather:#1f2d26;--page:#d9ccae;--page2:#cbbd9b;--ink:#2a2018;--brass:#b08d57;--wax:#6e1a22;--wax2:#4a1017;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%}
+body{margin:0;min-height:100%;background:radial-gradient(ellipse at 50% 30%,#2a1f17,var(--wood) 70%);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;display:flex;align-items:center;justify-content:center;padding:20px}
+.book{width:min(1080px,100%);display:flex;background:var(--leather);padding:14px 14px 14px 14px;border-radius:6px 14px 14px 6px;box-shadow:0 30px 60px #000a,inset 0 0 0 2px var(--brass)}
+.pages{flex:1;display:grid;grid-template-columns:1fr 1fr;min-height:560px;background:linear-gradient(90deg,var(--page),var(--page2) 49%,#a89873 50%,var(--page2) 51%,var(--page));border-radius:3px;position:relative}
+.pg{padding:34px 34px 40px;display:flex;flex-direction:column}
+.pg h1{font-family:"IM Fell English SC",serif;font-weight:400;font-size:2rem;margin:0 0 4px;letter-spacing:.02em}
+.pg .sub{font-style:italic;font-size:1.15rem;margin:0 0 18px;opacity:.8;border-bottom:1px solid #2a201855;padding-bottom:12px}
+.seals{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;align-content:flex-start;flex:1}
+.seal{--s:100px;width:var(--s);height:var(--s);border:0;cursor:pointer;color:#e9c9b8;font:600 .8rem/1.1 "Cormorant Garamond",serif;text-align:center;padding:14px;text-decoration:none;display:flex;align-items:center;justify-content:center;border-radius:52% 48% 55% 45%/48% 54% 46% 52%;background:radial-gradient(circle at 35% 30%,#9a2a33,var(--wax) 55%,var(--wax2));box-shadow:0 5px 8px #0006,inset 0 0 0 5px #0000,inset 0 0 0 6px #e9c9b833,inset 0 -5px 8px #0005;text-shadow:0 -1px 0 #0008;transition:transform .15s}
+.seal:nth-child(3n+2){border-radius:46% 54% 48% 52%/55% 45% 53% 47%;transform:rotate(-5deg);margin-top:18px}
+.seal:nth-child(3n){border-radius:55% 45% 50% 50%/46% 52% 48% 54%;transform:rotate(4deg)}
+.seal:hover,.seal:focus-visible{transform:scale(1.07) rotate(0)}
+.seal:focus-visible{outline:2px solid var(--brass);outline-offset:4px}
+.seal.new{background:none;box-shadow:none;border:1.5px dashed #2a201866;color:#2a201888;font-style:italic;font-weight:500;text-shadow:none}
+.note{margin-top:auto;padding-top:14px;font-style:italic;min-height:2.2em;font-size:1.05rem}
+.tabs{display:flex;flex-direction:column;gap:6px;margin-left:10px;padding-top:26px}
+.tab{writing-mode:vertical-rl;transform:rotate(180deg);font-family:"IM Fell English SC",serif;font-size:1rem;background:#2b3d33;color:var(--brass);border:1px solid var(--brass);border-left:0;padding:14px 8px;cursor:pointer;border-radius:0 8px 8px 0;white-space:nowrap}
+.tab[aria-selected=true]{background:var(--wax);color:#f1dcc8}
+.tab:focus-visible{outline:2px solid var(--page);outline-offset:2px}
+.fade{animation:f .35s ease}
+@keyframes f{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.fade{animation:none}.seal{transition:none}}
+@media(max-width:760px){
+body{padding:12px;align-items:flex-start}
+.book{flex-direction:column-reverse;padding:10px}
+.pages{grid-template-columns:1fr;background:var(--page)}
+.pg{padding:22px 20px}
+.tabs{flex-direction:row;overflow-x:auto;margin:0 0 8px;padding:0}
+.tab{writing-mode:horizontal-tb;transform:none;border:1px solid var(--brass);border-radius:8px 8px 0 0;padding:8px 12px}
+}
+</style>
+</head>
+<body>
+<main class="book">
+  <section class="pages" id="pages" aria-live="polite"></section>
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Baterias"></nav>
+</main>
+<script>
+// Edite aqui: cada selo tem label e href (link da página de estímulos). href vazio = ainda não montada.
+const CAPITULOS=[
+ {n:"WAIS-IV",s:"Escala de inteligência para adultos",i:[["Cubos",""],["Raciocínio Matricial",""],["Quebra-Cabeça Visual",""],["Completar Figuras",""],["+ nova"],["+ nova"]]},
+ {n:"NEUPSILIN",s:"Avaliação neuropsicológica breve",i:[["Cópia de Figuras",""],["Percepção Visual",""],["Memória Visuoverbal",""],["Compreensão Escrita",""],["Escrita Copiada",""],["+ nova"]]},
+ {n:"Funções executivas",s:"Flexibilidade, planejamento, inibição",i:[["WCST",""],["Torre de Londres",""],["Stroop",""],["Trilhas A e B",""],["+ nova"],["+ nova"]]},
+ {n:"Linguagem e percepção",s:"Nomeação, organização visual, fluência",i:[["FDT",""],["Hooper",""],["Nomeação de Boston",""],["+ nova"],["+ nova"]]},
+ {n:"Memória",s:"Evocação visual e verbal",i:[["Figura de Rey",""],["Memória de Faces",""],["+ nova"],["+ nova"]]},
+ {n:"Rastreio",s:"Avaliação cognitiva breve",i:[["MoCA",""],["MEEM",""],["ACE-R",""],["+ nova"]]},
+ {n:"Outros",s:"Material avulso",i:[["+ nova"],["+ nova"],["+ nova"]]}
+];
+const SIZES=[112,92,128,100,84,120];
+const pages=document.getElementById("pages"),tabs=document.getElementById("tabs");
+function show(k){
+  const c=CAPITULOS[k],half=Math.ceil(c.i.length/2);
+  const mk=(arr,off)=>arr.map(([l,h],j)=>{
+    const a=document.createElement(h?"a":"button");a.className="seal"+(l.startsWith("+")?" new":"");
+    a.style.setProperty("--s",SIZES[(j+off)%SIZES.length]+"px");a.textContent=l;
+    if(h)a.href=h;else a.type="button";
+    a.onclick=h?null:()=>{note.textContent=l.startsWith("+")?"Espaço livre para uma nova página de estímulos.":"Esta página de estímulos ainda não foi montada."};
+    return a}).reduce((d,e)=>(d.appendChild(e),d),Object.assign(document.createElement("div"),{className:"seals"}));
+  pages.innerHTML="";pages.className="pages fade";
+  const L=document.createElement("div");L.className="pg";L.innerHTML=`<h1></h1><p class="sub"></p>`;
+  L.querySelector("h1").textContent=c.n;L.querySelector(".sub").textContent=c.s;
+  L.appendChild(mk(c.i.slice(0,half),0));
+  const R=document.createElement("div");R.className="pg";R.appendChild(mk(c.i.slice(half),half));
+  const note=document.createElement("p");note.className="note";R.appendChild(note);
+  pages.append(L,R);
+  [...tabs.children].forEach((t,j)=>t.setAttribute("aria-selected",j===k));
+}
+CAPITULOS.forEach((c,k)=>{const b=document.createElement("button");b.className="tab";b.role="tab";b.textContent=c.n;b.onclick=()=>show(k);tabs.appendChild(b)});
+show(0);
+</script>
+</body>
+</html>
