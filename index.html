@@ -286,6 +286,13 @@ h1{font:400 clamp(1.65rem,3.3vh,2.55rem)/1.02 "IM Fell English SC",serif;margin:
 
 }
 
+
+/* Formas por índice global (variam entre páginas) */
+.seal[data-shape="0"]{clip-path:polygon(7% 0,93% 0,100% 12%,100% 88%,93% 100%,7% 100%,0 88%,0 12%); background:linear-gradient(145deg,#78513b,#4c3026 68%,#32241d)}
+.seal[data-shape="1"]{clip-path:polygon(50% 0,61% 8%,75% 4%,82% 16%,96% 23%,91% 38%,100% 50%,91% 62%,96% 77%,82% 84%,75% 96%,61% 92%,50% 100%,39% 92%,25% 96%,18% 84%,4% 77%,9% 62%,0 50%,9% 38%,4% 23%,18% 16%,25% 4%,39% 8%); background:radial-gradient(ellipse at 25% 15%,#a96c65 0%,transparent 43%),linear-gradient(145deg,#814d49,#622e34 72%);box-shadow:0 5px 8px #33231838,inset 0 1px 0 #e9b6a488,inset 0 -8px 12px #32161c66}
+.seal[data-shape="2"]{clip-path:polygon(0 8%,7% 0,93% 0,100% 8%,96% 50%,100% 92%,93% 100%,7% 100%,0 92%,4% 50%); background:radial-gradient(ellipse at 24% 16%,#9b9b70 0%,transparent 45%),linear-gradient(145deg,#737653,#414a36 75%);box-shadow:0 5px 8px #33231838,inset 0 1px 0 #d6d4a088,inset 0 -8px 12px #1b241b66}
+.seal[data-shape="3"]{clip-path:polygon(50% 0,61% 10%,75% 5%,82% 19%,96% 25%,90% 40%,100% 50%,90% 60%,96% 75%,82% 81%,75% 95%,61% 90%,50% 100%,39% 90%,25% 95%,18% 81%,4% 75%,10% 60%,0 50%,10% 40%,4% 25%,18% 19%,25% 5%,39% 10%); background:radial-gradient(ellipse at 24% 16%,#9aa39a 0%,transparent 43%),linear-gradient(145deg,#777660,#4c5e5a 75%);box-shadow:0 5px 8px #33231838,inset 0 1px 0 #d6d6b388,inset 0 -8px 12px #1a2c2d66}
+.seal[data-shape]{transform:rotate(var(--tilt,0deg))}
 .seal:hover,.seal:focus-visible{transform:translateY(-3px) scale(1.035) rotate(0);filter:brightness(1.1) drop-shadow(0 5px 3px #24180f35);z-index:2;box-shadow:0 10px 15px #33231848,inset 0 2px 1px #e0c28b99,inset 0 -8px 12px #17120e55}
 
 /* Identidade visual própria para os selos de cada capítulo. */
@@ -707,6 +714,33 @@ h1{font:400 clamp(1.65rem,3.3vh,2.55rem)/1.02 "IM Fell English SC",serif;margin:
 }
 @media(prefers-reduced-motion:reduce) { .book-nav { transition:none; } }
 
+
+/* Versão sem animação: duas páginas fixas por capítulo + ornamento decorativo */
+#pages.pages{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);position:relative;overflow:hidden;border:2px solid #846842;border-radius:10px;perspective:none;
+background:linear-gradient(90deg,#dfd1b1 0%,#d8c9a7 47%,#c5b18a 50%,#d9c9a5 53%,#e0d2b4 100%);
+box-shadow:inset 0 0 0 4px #9b7e50,inset 0 0 0 7px #e6d7b7,inset 0 0 28px #4c382322}
+#pages.pages::before,#pages.pages::after{display:block!important}
+#pages .pg.left-page,#pages .pg.right-page{grid-column:auto}
+.book-nav:disabled{opacity:.22;cursor:default}
+.ornament{margin-top:auto;display:flex;flex-direction:column;align-items:center;gap:9px;padding-top:14px;pointer-events:none;user-select:none}
+.ornament .rule{display:flex;align-items:center;gap:12px;width:100%}
+.ornament .rule:before,.ornament .rule:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,#8a7048aa,transparent)}
+.ornament .gem{width:9px;height:9px;transform:rotate(45deg);border:1px solid #8a7048;background:#c9b88f}
+.ornament p{margin:0;font-style:italic;font-size:.9rem;color:#806b4e;text-align:center}
+@media(max-width:760px){
+#pages.pages{grid-template-columns:minmax(0,1fr);overflow:visible;height:auto}
+#pages.pages::before,#pages.pages::after{display:none!important}
+#pages .pg{height:auto}
+}
+
+/* Selos espalhados e mais legíveis */
+#pages .pg .seals{position:relative;display:block;flex:1 1 0;min-height:0;overflow:visible;padding:0}
+#pages .pg .seal{position:absolute;margin:0;font-size:clamp(1.2rem,2.5vh,1.55rem);line-height:1.12;letter-spacing:.005em;text-shadow:0 1px 1px #1d120c99;padding:12px 18px}
+#pages .pg .seal:before{inset:7px}
+@media(max-width:760px){
+#pages .pg .seals{display:flex;flex-direction:column;gap:20px;padding:6px 0 10px}
+#pages .pg .seal{position:relative;flex:0 0 auto;font-size:1.35rem}
+}
 </style>
 
 </head>
@@ -723,11 +757,10 @@ h1{font:400 clamp(1.65rem,3.3vh,2.55rem)/1.02 "IM Fell English SC",serif;margin:
 
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
 <script>
 const CAPITULOS=[
  {n:"WAIS-IV",s:"Escala de inteligência para adultos",i:[["Completar Figuras","estimulo.html?t=completar"],["Raciocínio Matricial","estimulo.html?t=matricial"],["Códigos","estimulo.html?t=codigos"],["Procurar Símbolos","estimulo.html?t=simbolos"]]},
- {n:"ADOS",s:"Autismo e cognição social",i:[["Tuesday","estimulo.html?t=tuesday"],["Eyes","estimulo.html?t=eyes"],["Mapa","estimulo.html?t=mapa"],["Resort","estimulo.html?t=resort"],["Vinhetas","estimulo.html?t=vinhetas"]]},
+ {n:"Emocional",s:"Emoção e cognição social",i:[["Tuesday","estimulo.html?t=tuesday"],["Eyes","estimulo.html?t=eyes"],["Mapa","estimulo.html?t=mapa"],["Resort","estimulo.html?t=resort"],["Vinhetas","estimulo.html?t=vinhetas"]]},
  {n:"Atenção",s:"Atenção e funções executivas",i:[["BPA","estimulo.html?t=bpa"],["CTA","estimulo.html?t=cta"],["D2-R","estimulo.html?t=d2r"],["FDT","estimulo.html?t=fdt"],["Problemas de Minnesota","estimulo.html?t=minnesota"]]},
  {n:"Visual",s:"Percepção e organização visual",i:[["Hooper","estimulo.html?t=hooper"],["Figura de Rey","estimulo.html?t=rey"]]},
  {n:"Linguagem",s:"Nomeação e leitura",i:[["Nomeação de Boston","estimulo.html?t=boston"],["TLPP","estimulo.html?t=tlpp"],["Roubo dos Biscoitos","estimulo.html?t=biscoitos"]]},
@@ -735,7 +768,7 @@ const CAPITULOS=[
 ];
 const SIZES=[94,86,104,90,82,98];
 const pagesEl=document.getElementById('pages'), tabs=document.getElementById('tabs');
-let flipBook=null, currentChapter=0;
+let currentChapter=0;
 function makeSeal(label,href,index){
  const el=document.createElement(href?'a':'button');
  el.className='seal'+(label.startsWith('+')?' new':'');
@@ -749,16 +782,52 @@ function makeSeal(label,href,index){
 }
 function makeSeals(items,offset){
  const wrap=document.createElement('div');wrap.className='seals';
- // Ordem estável para que os selos não mudem de posição a cada renderização.
  items.forEach((item,i)=>{
    const index=i+offset,el=makeSeal(item[0],item[1],index);
-   const tilt=[-2.1,1.7,-1.2,2.2,-.8,1.1][index%6];
-   el.style.setProperty('--tilt',tilt+'deg');
-   el.style.setProperty('--seal-scale',[.98,1,.97,1.01,.99,1][index%6]);
-   el.style.marginTop=(index%3)*3+'px'; el.style.marginLeft=(index%2)*4+'px';
+   el.dataset.shape=String(index%4);
    wrap.appendChild(el);
  });
  return wrap;
+}
+// Posições pseudo-aleatórias, mas estáveis: cada página tem a sua "semente".
+function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const RATIO=[.74,.72,.92,.9]; // altura/largura de cada forma
+function layoutSeals(){
+ const mobile=matchMedia('(max-width:760px)').matches;
+ pagesEl.querySelectorAll('.seals').forEach(wrap=>{
+  const seals=[...wrap.children],n=seals.length,W=wrap.clientWidth,H=wrap.clientHeight;
+  const right=wrap.closest('.pg').classList.contains('right-page');
+  const rnd=mulberry((currentChapter+3)*7919+(right?131:17));
+  if(mobile){
+   seals.forEach(el=>{
+    const sh=+el.dataset.shape,w=Math.round(Math.min(W*.72,270)*(.9+rnd()*.2)),h=Math.round(w*RATIO[sh]);
+    el.style.setProperty('--w',w+'px');el.style.setProperty('--h',h+'px');
+    el.style.setProperty('--tilt',(rnd()*8-4).toFixed(1)+'deg');
+    el.style.left='auto';el.style.top='auto';
+    el.style.marginLeft='calc((100% - '+w+'px) * '+rnd().toFixed(2)+')';
+   });
+   return;
+  }
+  if(!W||!H)return;
+  const avg=RATIO.reduce((x,y)=>x+y)/4;
+  const base=Math.max(W*.3,Math.min(W*.52,250,Math.sqrt(.42*W*H/(n*avg))));
+  const placed=[];
+  seals.forEach((el,i)=>{
+   const sh=+el.dataset.shape;
+   let w=Math.round(base*(.9+rnd()*.2)),h=Math.round(w*RATIO[sh]*(.95+rnd()*.1));
+   const maxH=H*.46;if(h>maxH){const f=maxH/h;w=Math.round(w*f);h=Math.round(h*f)}
+   const m=6,gap=14;let pos=null;
+   for(let t=0;t<120&&!pos;t++){
+    const x=m+rnd()*Math.max(0,W-w-2*m),y=m+rnd()*Math.max(0,H-h-2*m);
+    if(placed.every(p=>x+w+gap<=p.x||p.x+p.w+gap<=x||y+h+gap<=p.y||p.y+p.h+gap<=y))pos={x,y};
+   }
+   if(!pos)pos={x:i%2?Math.max(0,W-w-m):m,y:n>1?i*Math.max(0,H-h)/(n-1):(H-h)/2};
+   placed.push({x:pos.x,y:pos.y,w,h});
+   el.style.setProperty('--w',w+'px');el.style.setProperty('--h',h+'px');
+   el.style.setProperty('--tilt',(rnd()*8-4).toFixed(1)+'deg');
+   el.style.left=Math.round(pos.x)+'px';el.style.top=Math.round(pos.y)+'px';el.style.marginLeft='0';
+  });
+ });
 }
 function makeChapterPages(c,k){
  const half=Math.ceil(c.i.length/2),left=document.createElement('article'),right=document.createElement('article');
@@ -770,25 +839,26 @@ function makeChapterPages(c,k){
  const sub=document.createElement('p');sub.className='sub';sub.textContent=c.s;copy.append(h,sub);
  const stamp=document.createElement('div');stamp.className='stamp';stamp.textContent='FICHA DE ESTÍMULOS';head.append(copy,stamp);
  left.append(kicker,head,makeSeals(c.i.slice(0,half),k*10));
- const bottom=document.createElement('div');bottom.className='left-bottom';
- const figure=document.createElement('figure');figure.className='polaroid';
- const art=document.createElement('div');art.className='art';art.textContent='✦  ◉  ✦';
- const cap=document.createElement('figcaption');cap.textContent='Registro visual · material de apoio';figure.append(art,cap);
- const caption=document.createElement('p');caption.className='left-caption';caption.textContent='Arquivo de estímulos e materiais de consulta.';
- bottom.append(figure,caption);left.append(bottom);
+ const orn=document.createElement('div');orn.className='ornament';orn.setAttribute('aria-hidden','true');
+orn.innerHTML='<div class="rule"><span class="gem"></span></div><p>Arquivo de estímulos e materiais de consulta.</p>';left.append(orn);
  right.append(makeSeals(c.i.slice(half),k*10+half));
  const footerL=document.createElement('div');footerL.className='kicker page-number';footerL.textContent=String(k*2+1).padStart(2,'0');left.append(footerL);
  const footerR=document.createElement('div');footerR.className='kicker page-number';footerR.textContent=String(k*2+2).padStart(2,'0');right.append(footerR);
  return [left,right];
 }
-function updateTabs(pageIndex){
- currentChapter=Math.min(CAPITULOS.length-1,Math.floor(pageIndex/2));
- [...tabs.children].forEach((t,j)=>{const active=j===currentChapter;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;});
+function updateTabs(k){
+ currentChapter=k;
+ [...tabs.children].forEach((t,j)=>{const active=j===k;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;});
 }
 function goToChapter(k){
- k=(k+CAPITULOS.length)%CAPITULOS.length;
- if(flipBook)flipBook.flip(k*2);
- updateTabs(k*2);
+ k=Math.max(0,Math.min(CAPITULOS.length-1,k));
+ pagesEl.replaceChildren(...chapterPages[k]);
+ updateTabs(k);
+ document.getElementById('prevPage').disabled=(k===0);
+ document.getElementById('nextPage').disabled=(k===CAPITULOS.length-1);
+ try{sessionStorage.setItem('cap',String(k))}catch(e){}
+ layoutSeals();
+ window.scrollTo(0,0);
 }
 CAPITULOS.forEach((c,k)=>{
  const b=document.createElement('button');b.className='tab';b.type='button';b.setAttribute('role','tab');b.textContent=c.n;
@@ -796,29 +866,13 @@ CAPITULOS.forEach((c,k)=>{
  b.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();const next=(k+(e.key==='ArrowRight'?1:CAPITULOS.length-1))%CAPITULOS.length;tabs.children[next].focus();goToChapter(next);}});
  tabs.appendChild(b);
 });
-const allPages=[];
-CAPITULOS.forEach((c,k)=>allPages.push(...makeChapterPages(c,k)));
-allPages.forEach(p=>pagesEl.appendChild(p));
-function initFlipBook(){
- if(!window.St||!window.St.PageFlip){
-   pagesEl.classList.add('library-fallback');
-   console.error('A biblioteca StPageFlip não carregou. Verifique a conexão com a internet.');
-   return;
- }
- flipBook=new St.PageFlip(pagesEl,{
-   width:520,height:740,size:'stretch',minWidth:280,maxWidth:900,minHeight:360,maxHeight:1280,
-   drawShadow:true,flippingTime:1050,usePortrait:true,startPage:0,autoSize:true,
-   maxShadowOpacity:.48,showCover:false,mobileScrollSupport:true,clickEventForward:true,
-   useMouseEvents:true,swipeDistance:30,showPageCorners:true,disableFlipByClick:false
- });
- flipBook.loadFromHTML(pagesEl.querySelectorAll('.pg'));
- flipBook.on('flip',e=>updateTabs(e.data));
- updateTabs(0);
-}
-document.getElementById('prevPage').addEventListener('click',()=>{if(flipBook)flipBook.flipPrev();});
-document.getElementById('nextPage').addEventListener('click',()=>{if(flipBook)flipBook.flipNext();});
-// A biblioteca cria o seu próprio canvas de folhas; aguarda o layout inicial do navegador.
-requestAnimationFrame(()=>requestAnimationFrame(initFlipBook));
+const chapterPages=CAPITULOS.map((c,k)=>makeChapterPages(c,k));
+document.getElementById('prevPage').addEventListener('click',()=>goToChapter(currentChapter-1));
+document.getElementById('nextPage').addEventListener('click',()=>goToChapter(currentChapter+1));
+let start=0;try{start=parseInt(sessionStorage.getItem('cap'))||0}catch(e){}
+goToChapter(start);
+if(window.ResizeObserver){let raf;new ResizeObserver(()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(layoutSeals)}).observe(pagesEl)}else addEventListener('resize',layoutSeals);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layoutSeals);
 </script>
 
 </body>
